@@ -32,8 +32,5 @@ user dev
 # Setup dev user environment
 env HOME /home/dev
 env PATH $HOME/bin:$PATH
-env LANG fr_FR.UTF-8
-env LANGUAGE fr_FR:fr
-env LC_ALL fr_FR.UTF-8
 
 entrypoint ["/usr/bin/ssh-agent", "/bin/zsh"]
