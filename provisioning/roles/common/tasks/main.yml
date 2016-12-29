@@ -1,16 +1,8 @@
-- name: add contribi and non-free repositories
-  apt_repository: repo='deb http://httpredir.debian.org/debian jessie main contrib non-free' state=present update_cache=yes
-
-- name: add backports repository
-  apt_repository: repo='deb http://httpredir.debian.org/debian jessie-backports main' state=present update_cache=yes
-
-- command: dpkg --configure -a
-
 - name: upgrade system
-  apt: upgrade=dist update_cache=yes
+  apt: upgrade=dist update_cache=yes force=yes
 
 - name: install dependencies
-  apt: name={{ item }} state=present
+  apt: name={{ item }} state=present force=yes
   with_items:
     - man
     - git
@@ -51,11 +43,6 @@
     line='127.0.1.1 {{ hostname }}'
     owner=root group=root mode=0644
   when: hostname is defined
-
-- name: install motd
-  template: >
-    dest=/etc/motd
-    src=motd.j2
 
 - name: activate unattended-upgrades
   copy: src=10periodic dest=/etc/apt/apt.conf.d/10periodic owner=root group=root

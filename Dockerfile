@@ -2,9 +2,7 @@
 #
 # VERSION 0.0.1
 
-from debian:jessie
-
-maintainer Nicolas Carlier <https://github.com/ncarlier>
+from ubuntu:latest
 
 env DEBIAN_FRONTEND noninteractive
 
